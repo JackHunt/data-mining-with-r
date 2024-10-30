@@ -1,0 +1,44 @@
+---
+title: "Chapter 2 - Predicting Algae Blooms"
+title-block-banner: true
+number-sections: true
+format:
+  html:
+    toc: true
+    toc-location: left
+    smooth-scroll: true
+    df-print: kable
+theme:
+  dark: darkly
+  light: flatly
+---
+
+# Data Description
+## Overview
+The data contain the following variables
+
+* Season in which the measurements were collected.
+* River size.
+* River speed.
+* Max pH value.
+* Min oxygen level.
+* Mean over three measurements
+  * Chloride.
+  * Nitrates.
+  * Ammonium.
+  * Orthophosphate.
+  * Phosphate.
+  * Chlorophyll.
+
+Associated with each are seven frequencies of harmful algae, per water sample.
+
+## Summary
+```{r}
+#| echo: false
+library(DMwR)
+```
+
+```{r}
+head(algae)
+```
+
