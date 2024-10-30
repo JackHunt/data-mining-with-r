@@ -10,7 +10,7 @@ format:
     df-print: kable
     tbl-print: kable
 theme:
-  dark: darkly
+  dark: superhero
   light: flatly
 ---
 
@@ -53,7 +53,7 @@ head(algae)
 kable(summary(algae))
 ```
 
-## Variable Histograms
+## Variable Distributions
 ```{r}
 plot_variable <- function(var) {
     hist <- ggplot(algae, aes(x = {{ var }})) +
@@ -73,40 +73,48 @@ plot_variable <- function(var) {
 
 ### Max pH
 ```{r}
+#| warning: false
 plot_variable(mxPH)
 ```
 
 ### Min Oxygen
 ```{r}
+#| warning: false
 plot_variable(mnO2)
 ```
 
 ### Mean Chloride
 ```{r}
+#| warning: false
 plot_variable(Cl)
 ```
 
 ### Mean Nitrates
 ```{r}
+#| warning: false
 plot_variable(NO3)
 ```
 
 ### Mean Ammonium
 ```{r}
+#| warning: false
 plot_variable(NH4)
 ```
 
 ### Mean Orthophosphate
 ```{r}
+#| warning: false
 plot_variable(oPO4)
 ```
 
 ### Mean Phosphate
 ```{r}
+#| warning: false
 plot_variable(PO4)
 ```
 
 ### Mean Chlorophyll
 ```{r}
+#| warning: false
 plot_variable(Chla)
 ```
