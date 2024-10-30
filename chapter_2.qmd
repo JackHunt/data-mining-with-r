@@ -8,10 +8,20 @@ format:
     toc-location: left
     smooth-scroll: true
     df-print: kable
+    tbl-print: kable
 theme:
   dark: darkly
   light: flatly
 ---
+
+# Setup
+```{r}
+library(DMwR)
+library(knitr)
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+```
 
 # Data Description
 ## Overview
@@ -33,12 +43,70 @@ The data contain the following variables
 Associated with each are seven frequencies of harmful algae, per water sample.
 
 ## Summary
-```{r}
-#| echo: false
-library(DMwR)
-```
-
+### Head
 ```{r}
 head(algae)
 ```
 
+### Summary Stats
+```{r}
+kable(summary(algae))
+```
+
+## Variable Histograms
+```{r}
+plot_variable <- function(var) {
+    hist <- ggplot(algae, aes(x = {{ var }})) +
+        geom_density() +
+        theme_economist()
+
+    qq <- ggplot(algae, aes(sample = {{ var }})) +
+        stat_qq() +
+        stat_qq_line() +
+        theme_economist()
+
+    hist + qq + plot_annotation(
+        title = paste0("Distribution for ", deparse(substitute(var)))
+    )
+}
+```
+
+### Max pH
+```{r}
+plot_variable(mxPH)
+```
+
+### Min Oxygen
+```{r}
+plot_variable(mnO2)
+```
+
+### Mean Chloride
+```{r}
+plot_variable(Cl)
+```
+
+### Mean Nitrates
+```{r}
+plot_variable(NO3)
+```
+
+### Mean Ammonium
+```{r}
+plot_variable(NH4)
+```
+
+### Mean Orthophosphate
+```{r}
+plot_variable(oPO4)
+```
+
+### Mean Phosphate
+```{r}
+plot_variable(PO4)
+```
+
+### Mean Chlorophyll
+```{r}
+plot_variable(Chla)
+```
