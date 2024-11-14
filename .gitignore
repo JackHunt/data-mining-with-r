@@ -1,3 +1,5 @@
 *.html
 /chapter2_files
 *.qmd
+/algae_files
+.DS_Store
